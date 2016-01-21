@@ -93,3 +93,7 @@ section{
 .front:hover > .back, .back:hover > .front {
 	display:block;
 }
+
+.nav li a:hover{
+	background-color: ##9DBCCF;
+}
