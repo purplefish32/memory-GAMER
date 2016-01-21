@@ -51,6 +51,7 @@ nav{
 	perspective: 1000;
 	float: left;
 	margin-right: 5px;
+	margin-bottom: 5px;
 }
 
 /* flip the pane when hovered */
@@ -79,6 +80,7 @@ nav{
 	position: absolute;
 	top: 0;
 	left: 0;
+	background-color: #FFF;
 }
 
 /* front pane, placed above back */
