@@ -45,55 +45,57 @@ nav{
 	margin-bottom: 20px;
 	color: #777777;
 }
-.flip3D {
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
 	float: left;
+	margin-right: 5px;
 }
 
-.flip3D article{
-	border-radius: 7px; 
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+	transform: rotateY(180deg);
 }
-section{
-	clear:both;
-	display:block;
+
+.flip-container, .front, .back {
+	width: 150px;
+	height: 200px;
 }
-/*.flip3D > .front{
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	border: 1px solid #000;
+	border-radius: 5px;
 	position: absolute;
-	transform: perspective ( 600px ) rotateY ( 0deg );
-	border-radius: 7px; 
-	backface visibility: hidden;
-	transition :transform .5s linear 0s;
-}
-.flip3D > .back, .front:hover {
-	position: absolute;
-	transform: perspective ( 600px ) rotateY ( 180deg );
-	border-radius: 7px; 
-	backface visibility: hidden;
-	background-color:yellow;
-	transition :transform .5s linear 0s;
-}
-.flip3D:hover > .front {
-	transform: perspective ( 600px ) rotateY ( -180deg );
-}
-.flip3D:hover > .back {
-	transform: perspective ( 600px ) rotateY ( 0deg );
-}*/
-
-.front > .front, .back > .back {
-	display:block;
+	top: 0;
+	left: 0;
 }
 
-.front:hover > .front, .back:hover > .back {
-	display:none;
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+	background-image: url("images/playing-card-back.jpg");
+	background-size: 158px 208px;
+	background-position: -5px -5px;
 }
 
-.front > .back, .back > .front {
-	display:none;
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
 }
 
-.front:hover > .back, .back:hover > .front {
-	display:block;
-}
-
-.nav li a:hover{
-	background-color: ##9DBCCF;
+#card-holder {
+	overflow: auto;
 }
